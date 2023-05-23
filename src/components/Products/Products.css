@@ -1,0 +1,79 @@
+* {
+  margin: 0;
+}
+.container {
+  width: 100%;
+  height: 100vh;
+  box-sizing: border-box;
+  margin: 0 auto;
+  padding: 0 auto;
+}
+.productsCategories {
+  display: flex;
+  margin: 0 auto;
+  padding: 0 auto;
+}
+
+.foodCategory {
+  width: 33%;
+  height: 100vh;
+  background-image: url("../Products/assetsProducts/traditionalFood.jpg");
+  background-size: cover;
+}
+.clothesCategory {
+  width: 34%;
+  height: 100vh;
+  background-image: url("../Products/assetsProducts/traditionalClothes.jpg");
+  background-size: cover;
+}
+.souvenirsCategory {
+  width: 33%;
+  height: 100vh;
+  background-image: url("../Products/assetsProducts/traditionalSouvenirs.jpg");
+  background-size: cover;
+}
+.productsCategory {
+  display: flex;
+  justify-content: center;
+  align-items: end;
+}
+.categoryBtn {
+  width: 78.125%;
+  height: 9.25%;
+  margin-bottom: 7%;
+  border: 2px solid white;
+  border-radius: 50px;
+  background-color: transparent;
+  font-family: "Inter";
+  font-style: normal;
+  font-weight: 400;
+  font-size: 1.5em;
+  line-height: 39px;
+
+  color: #ffffff;
+}
+#sideBarIcons {
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  height: 216px;
+  margin-left: -40px;
+  align-self: center;
+}
+@media screen and (max-width: 768px) {
+  .productsCategories {
+    display: flex;
+    width: 768px;
+    flex-wrap: wrap;
+  }
+  .productsCategory {
+    width: 100%;
+    height: 864px;
+  }
+}
+@media screen and (max-width: 1024px) {
+  .categoryBtn {
+    font-size: 1.2em;
+    line-height: 39px;
+  }
+}
