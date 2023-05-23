@@ -1,13 +1,7 @@
 import React from "react";
-import Products from "./components/Products/Products";
-import MainPage from "./components/MainPage/MainPage";
 
 const App = () => {
-  return (
-    <div>
-      <MainPage />
-    </div>
-  );
+  return <div>App</div>;
 };
 
 export default App;
