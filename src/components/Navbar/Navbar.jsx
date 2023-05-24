@@ -31,15 +31,16 @@ const Navbar = () => {
     <div >
         <div className="nav-container">
             <div className="item-logo">
-              <img src={logo}/>
+              <img onClick={()=>navigate('/main')} src={logo}/>
             </div>
             <div className="item-menu">
                {pages.map((item)=>(
                 <h5
-                onClick={() => navigate(`/${item.link}`)}
+                onClick={() => navigate(`${item.link}`)}
                 key={item.id}
                 >{item.name}</h5>
                ))}
+               
             </div>
             <div className="item-search">
             <img  src={searchIcon} alt="searchIcon"/>
