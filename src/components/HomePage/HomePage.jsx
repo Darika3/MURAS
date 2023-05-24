@@ -6,7 +6,7 @@ import instagram from "../../assets/image/inst.svg"
 import telegram from "../../assets/image/telegram.svg"
 import facebook from "../../assets/image/facebook.svg"
 import WhatsApp from "../../assets/image/Wp.svg"
-
+import WelcomeText from "../../assets/image/textWelcome.png"
 
 const HomePage = () => {
   return (
@@ -22,7 +22,7 @@ const HomePage = () => {
         </div>
         <img className='homePage__item-pic' src= {backgroundPic} alt="backgroundPic" />
         <div className="homePage__item-text">
-        <h1>Welcome to Kyrgyzstan</h1>
+        <h1><img src={WelcomeText} alt="WelcomeText" /></h1>
         <p>Discover the Essence of Kyrgyzstan with Muras</p>
         </div>
       </div>

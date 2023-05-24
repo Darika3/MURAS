@@ -8,6 +8,22 @@ import shopIcon from "../../assets/image/shopIcon.svg"
 import profileIcon from "../../assets/image/profileIcon.svg"
 import burgerMenu from "../../assets/image/burgerMenu.png"
 import "../Navbar/Navbar.css"
+import Box from '@mui/material/Box';
+import Drawer from '@mui/material/Drawer';
+import Button from '@mui/material/Button';
+import List from '@mui/material/List';
+import Divider from '@mui/material/Divider';
+import ListItem from '@mui/material/ListItem';
+import ListItemButton from '@mui/material/ListItemButton';
+import ListItemIcon from '@mui/material/ListItemIcon';
+import ListItemText from '@mui/material/ListItemText';
+import InboxIcon from '@mui/icons-material/MoveToInbox';
+import HomeIcon from '@mui/icons-material/Home';
+import TerrainIcon from '@mui/icons-material/Terrain';
+import MailIcon from '@mui/icons-material/Mail';
+import BookmarkBorderIcon from '@mui/icons-material/BookmarkBorder';
+import AddShoppingCartIcon from '@mui/icons-material/AddShoppingCart';
+import PersonIcon from '@mui/icons-material/Person';
 
 const pages = [
     {name: "Home", link: "/", id:1},
@@ -27,6 +43,59 @@ const Navbar = () => {
       setOpenModal(false)
   };
   
+  const [state, setState] = React.useState({
+    top: false,
+    left: false,
+    bottom: false,
+    right: false,
+  });
+
+  const toggleDrawer = (anchor, open) => (event) => {
+    if (event.type === 'keydown' && (event.key === 'Tab' || event.key === 'Shift')) {
+      return;
+    }
+
+    setState({ ...state, [anchor]: open });
+  };
+
+  const anchor = "right";
+  const list = (anchor) => (
+    <Box
+      sx={{ width: anchor === 'top' || anchor === 'bottom' ? 'auto' : 250 }}
+      role="presentation"
+      onClick={toggleDrawer(anchor, false)}
+      onKeyDown={toggleDrawer(anchor, false)}
+    >
+      <List>
+        {[{title:'Home', link: "/"},
+         {title:'Our Culture', link: "/culture"}, 
+         {title:'Products', link: "/products"},
+         {title:'Tours', link: "/products"} ].map((text, index) => (
+          <ListItem key={text} disablePadding>
+            <ListItemButton>
+              <ListItemIcon>
+                {/* {if(index === 0){
+
+                }}
+                 <HomeIcon onClick={()=>navigate('/')} /> */}
+              </ListItemIcon>
+              <ListItemText primary={text.title} onClick={()=>navigate(`${text.link}`)} />
+            </ListItemButton>
+          </ListItem>
+        ))}
+      </List>
+      <Divider />
+      <List sx={{width:"90%", display: "flex"}}>
+        <ListItem sx={{display: "flex", justifyContent:"space-around"}}>
+        <BookmarkBorderIcon/>
+        <AddShoppingCartIcon/>
+        <PersonIcon />
+        </ListItem>
+       
+      </List>
+    </Box>
+  );
+
   return (
     <div >
         <div className="nav-container">
@@ -61,7 +130,18 @@ const Navbar = () => {
     <p>Login</p>
     <p>Logout</p>
   </div>}
-  <img id='burger' src={burgerMenu} alt="burgerMenu" />
+  <div>
+  <React.Fragment key={anchor}>
+  <Button id='burger' onClick={toggleDrawer(anchor, true)}><img  src={burgerMenu} alt="burgerMenu" /></Button>
+  <Drawer
+    anchor={anchor}
+    open={state[anchor]}
+    onClose={toggleDrawer(anchor, false)}
+  >
+    {list(anchor)}
+  </Drawer>
+</React.Fragment>
+    </div>
     </div>
   )
 }

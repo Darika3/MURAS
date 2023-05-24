@@ -4,9 +4,11 @@ import instagramIcon from "../Products/assetsProducts/instagramIcon.svg";
 import telegramIcon from "../Products/assetsProducts/TelegramIcon.svg";
 import facebook from "../Products/assetsProducts/FacebookIcon.svg";
 import phoneIcon from "../Products/assetsProducts/PhoneIcon.svg";
+import Navbar from "../Navbar/Navbar";
 const Products = () => {
   return (
     <div className="container productsCategories">
+      <Navbar/>
       <div className="productsCategory foodCategory">
         <div id="sideBarIcons">
           <img src={instagramIcon} alt="" />

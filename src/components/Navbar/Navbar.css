@@ -65,15 +65,15 @@ color: #fff;
     display: none;
     position: absolute;
     top: 35px;
-    left: 86%;
-    
+    left: 82%;
+    padding: 0;
     z-index: 10;
 }
 .modal-profile{
     position: absolute;
     left: 92%;
     top: 68px;
-    width: 80px;
+    width: 90px;
     height: 85px;
     background-color: #D0CEC8;
     color: #4D4D4D;
@@ -89,6 +89,7 @@ color: #fff;
 }
 
 @media (max-width:768px ) {
+   
     .item-menu{
         display: none;
     }
