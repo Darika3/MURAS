@@ -1,11 +1,10 @@
 import React from "react";
-import Products from "./components/Products/Products";
-import MainPage from "./components/MainPage/MainPage";
+import MainRoutes from "./routes/MainRoutes";
 
 const App = () => {
   return (
     <div>
-      <MainPage />
+      <MainRoutes />
     </div>
   );
 };
