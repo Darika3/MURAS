@@ -60,15 +60,22 @@
   margin-left: -40px;
   align-self: center;
 }
+.socialIcons {
+  width: 30px;
+  height: 30px;
+}
 @media screen and (max-width: 768px) {
   .productsCategories {
     display: flex;
-    width: 768px;
+    width: 100vw;
     flex-wrap: wrap;
   }
   .productsCategory {
     width: 100%;
     height: 864px;
+  }
+  .socialIcons {
+    display: none;
   }
 }
 @media screen and (max-width: 1024px) {

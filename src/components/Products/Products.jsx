@@ -8,13 +8,13 @@ import Navbar from "../Navbar/Navbar";
 const Products = () => {
   return (
     <div className="container productsCategories">
-      <Navbar/>
+      <Navbar />
       <div className="productsCategory foodCategory">
         <div id="sideBarIcons">
-          <img src={instagramIcon} alt="" />
-          <img src={telegramIcon} alt="" />
-          <img src={facebook} alt="" />
-          <img src={phoneIcon} alt="" />
+          <img className="socialIcons" src={instagramIcon} alt="" />
+          <img className="socialIcons" src={telegramIcon} alt="" />
+          <img className="socialIcons" src={facebook} alt="" />
+          <img className="socialIcons" src={phoneIcon} alt="" />
         </div>
         <button className="categoryBtn">Traditional Food</button>
       </div>
