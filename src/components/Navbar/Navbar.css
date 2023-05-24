@@ -3,7 +3,6 @@
     margin: 0;
     box-sizing: border-box;
 }
-
 .nav-container{
     position: absolute;
     background-color: transparent;
@@ -65,7 +64,7 @@ color: #fff;
     display: none;
     position: absolute;
     top: 35px;
-    left: 83%;
+    left: 86%;
     padding: 0;
     z-index: 10;
 }
@@ -106,3 +105,4 @@ color: #fff;
     display: flex;
 }
 }
+

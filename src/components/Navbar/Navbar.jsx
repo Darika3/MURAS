@@ -61,7 +61,7 @@ const Navbar = () => {
   const anchor = "right";
   const list = (anchor) => (
     <Box
-      sx={{ width: anchor === 'top' || anchor === 'bottom' ? 'auto' : 250 }}
+      sx={{ width: anchor === 'top' || anchor === 'bottom' ? 'auto' : 210 }}
       role="presentation"
       onClick={toggleDrawer(anchor, false)}
       onKeyDown={toggleDrawer(anchor, false)}
@@ -133,7 +133,7 @@ const Navbar = () => {
   </div>}
   <div>
   <React.Fragment key={anchor}>
-  <Button id='burger' onClick={toggleDrawer(anchor, true)}><img  src={burgerMenu} alt="burgerMenu" /></Button>
+  <img onClick={toggleDrawer(anchor, true)} id='burger' src={burgerMenu} alt="burgerMenu" />
   <Drawer
     anchor={anchor}
     open={state[anchor]}
@@ -145,44 +145,44 @@ const Navbar = () => {
     </div>
     </div>
   );
-  return (
-  <div>
-      <div className="nav-container">
-        <div className="item-logo">
-          <img onClick={() => navigate("/main")} src={logo} />
-        </div>
-        <div className="item-menu">
-          {pages.map((item) => (
-            <h5 onClick={() => navigate(`${item.link}`)} key={item.id}>
-              {item.name}
-            </h5>
-          ))}
-        </div>
-        <div className="item-search">
-          <img src={searchIcon} alt="searchIcon" />
-          <input type="text" />
-        </div>
-        <div className="item-icons">
-          <img src={favoriteIcon} alt="favoriteIcon" />
-          <img src={shopIcon} alt="favoriteIcon" />
-          <img
-            onMouseMove={handleMouseOpen}
-            onClick={handleMouseClose}
-            src={profileIcon}
-            alt="favoriteIcon"
-          />
-        </div>
-      </div>
-      {openModal && (
-        <div className="modal-profile">
-          <p>Register</p>
-          <p>Login</p>
-          <p>Logout</p>
-        </div>
-      )}
-      <img id="burger" src={burgerMenu} alt="burgerMenu" />
-    </div>
-  );
+  // return (
+  // <div>
+  //     <div className="nav-container">
+  //       <div className="item-logo">
+  //         <img onClick={() => navigate("/main")} src={logo} />
+  //       </div>
+  //       <div className="item-menu">
+  //         {pages.map((item) => (
+  //           <h5 onClick={() => navigate(`${item.link}`)} key={item.id}>
+  //             {item.name}
+  //           </h5>
+  //         ))}
+  //       </div>
+  //       <div className="item-search">
+  //         <img src={searchIcon} alt="searchIcon" />
+  //         <input type="text" />
+  //       </div>
+  //       <div className="item-icons">
+  //         <img src={favoriteIcon} alt="favoriteIcon" />
+  //         <img src={shopIcon} alt="favoriteIcon" />
+  //         <img
+  //           onMouseMove={handleMouseOpen}
+  //           onClick={handleMouseClose}
+  //           src={profileIcon}
+  //           alt="favoriteIcon"
+  //         />
+  //       </div>
+  //     </div>
+  //     {openModal && (
+  //       <div className="modal-profile">
+  //         <p>Register</p>
+  //         <p>Login</p>
+  //         <p>Logout</p>
+  //       </div>
+  //     )}
+  //     <img id="burger" src={burgerMenu} alt="burgerMenu" />
+  //   </div>
+  // );
       };
 
 export default Navbar;
