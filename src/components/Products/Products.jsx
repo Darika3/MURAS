@@ -5,7 +5,9 @@ import telegramIcon from "../Products/assetsProducts/TelegramIcon.svg";
 import facebook from "../Products/assetsProducts/FacebookIcon.svg";
 import phoneIcon from "../Products/assetsProducts/PhoneIcon.svg";
 import Navbar from "../Navbar/Navbar";
+import { useNavigate } from "react-router";
 const Products = () => {
+  const navigate = useNavigate();
   return (
     <div className="container productsCategories">
       <Navbar />
@@ -19,10 +21,14 @@ const Products = () => {
         <button className="categoryBtn">Traditional Food</button>
       </div>
       <div className="productsCategory clothesCategory">
-        <button className="categoryBtn">Traditional Clothes</button>
+        <button onClick={() => navigate("/clothes")} className="categoryBtn">
+          Traditional Clothes
+        </button>
       </div>
       <div className="productsCategory souvenirsCategory">
-        <button className="categoryBtn">Traditional Souvenirs</button>
+        <button onClick={() => navigate("/souvenirs")} className="categoryBtn">
+          Traditional Souvenirs
+        </button>
       </div>
     </div>
   );
