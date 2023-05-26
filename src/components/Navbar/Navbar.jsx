@@ -30,7 +30,7 @@ const pages = [
   { name: "Our Culture", link: "/culture", id: 2 },
   { name: "Products", link: "/products", id: 3 },
   { name: "Tours", link: "/tours", id: 4 },
-];
+];       
 
 const Navbar = () => {
   const navigate = useNavigate();

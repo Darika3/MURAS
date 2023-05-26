@@ -6,6 +6,8 @@ import Products from "../components/Products/Products";
 import Clothes from "../components/Products/Clothes";
 import Souvenirs from "../components/Products/Souvenirs";
 import ProductFood from "../components/Products/ProductsFood/ProductFood";
+import Culture from "../components/Culture/Culture";
+import Tours from "../components/Tours/Tours";
 
 const MainRoutes = () => {
   const PUBLIC_ROUTES = [
@@ -15,6 +17,8 @@ const MainRoutes = () => {
     { link: "/clothes", element: <Clothes />, id: 4 },
     { link: "/souvenirs", element: <Souvenirs />, id: 5 },
     { link: "/food", element: <ProductFood/>, id: 6 },
+    { link: "/culture", element: <Culture/>, id: 7 },
+    { link: "/tours", element: <Tours/>, id: 8 },
   ];
   return (
     <>
