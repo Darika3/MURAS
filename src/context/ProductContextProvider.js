@@ -9,7 +9,6 @@ export const API = "http://13.51.56.148/";
 const INIT_STATE = {
   products: [],
   pages: 1,
-  categories: [],
   oneProduct: null,
 };
 
