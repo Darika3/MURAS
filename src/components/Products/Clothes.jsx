@@ -5,6 +5,7 @@ import Navbar from "../Navbar/Navbar";
 
 import Productcard from "./Crud/ProductCard";
 import AddProduct from "./Crud/AddProduct";
+import ProductList from "./ProductsFood/ProductList";
 const Clothes = () => {
   return (
     <div>
@@ -36,7 +37,7 @@ const Clothes = () => {
           <button>Headdress</button>
           <button>Shoes</button>
         </div>
-        <Productcard />
+        <ProductList />
       </div>
     </div>
   );

@@ -1,14 +1,13 @@
 import React from "react";
 import "../Crud/FoodCard.css";
 import AddShoppingCartIcon from "@mui/icons-material/AddShoppingCart";
-import CardImg from "../../../assets/image/CardIcon.png";
-const Productcard = () => {
+const ProductCard = ({ item }) => {
   return (
     <>
       <div className="card-container">
         <div className="card">
           <div className="card-front">
-            <img className="cardIcon" src={CardImg} alt="CardImg" />
+            <img className="cardIcon" src={item.image} alt="CardImg" />
             <div className="mainImg-card">
               <img
                 style={{ width: "100%", height: "160px", borderRadius: "10px" }}
@@ -17,14 +16,14 @@ const Productcard = () => {
               />
             </div>
             <div className="text-card">
-              <p className="title_text-card">Jacket</p>
-              <p className="price_text-card">123$</p>
+              <p className="title_text-card">{item.name}</p>
+              <p className="price_text-card">${item.price}</p>
             </div>
           </div>
           <div className="card-back">
-            <p>Description:</p>
+            <p>Description:{item.description}</p>
 
-            <p>Category:</p>
+            <p>Category:{item.category}</p>
             <div className="card-btn">
               <button className="addCard-btn">
                 <AddShoppingCartIcon />
@@ -41,4 +40,4 @@ const Productcard = () => {
   );
 };
 
-export default Productcard;
+export default ProductCard;

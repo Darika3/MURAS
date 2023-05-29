@@ -49,11 +49,10 @@ const ProductFood = () => {
       </div>
       <div className="product__food_card-container">
         <div className="item_filter-btn">
-          <button>meal</button>
-          <button>drinks</button>
-          <button>snacks</button>
+          <button>Meal</button>
+          <button>Drinks</button>
+          <button>Snacks</button>
         </div>
-        <FoodCart />
       </div>
     </>
   );

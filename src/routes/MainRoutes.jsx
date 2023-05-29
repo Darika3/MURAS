@@ -23,21 +23,18 @@ const MainRoutes = () => {
     { link: "/souvenirs", element: <Souvenirs />, id: 5 },
     { link: "/register", element: <Registration />, id: 6 },
     { link: "/login", element: <Log />, id: 7 },
-    { link: "/food", element: <ProductFood />, id: 6 },
-    { link: "/culture", element: <Culture />, id: 7 },
-    { link: "/tours", element: <Tours />, id: 8 },
-    { link: "/cart", element: <Cart />, id: 9 },
-    { link: "/admin", element: <AddProduct />, id: 10 },
+    { link: "/food", element: <ProductFood />, id: 8 },
+    { link: "/culture", element: <Culture />, id: 9 },
+    { link: "/tours", element: <Tours />, id: 10 },
+    { link: "/cart", element: <Cart />, id: 11 },
+    { link: "/admin", element: <AddProduct />, id: 12 },
   ];
   return (
     <>
       <Routes>
-        {PUBLIC_ROUTES.map(
-          (item) => (
-            { link: "/", element: <MainPage />, id: 1 },
-            (<Route path={item.link} element={item.element} key={item.id} />)
-          )
-        )}
+        {PUBLIC_ROUTES.map((item) => (
+          <Route path={item.link} element={item.element} key={item.id} />
+        ))}
       </Routes>
     </>
   );
