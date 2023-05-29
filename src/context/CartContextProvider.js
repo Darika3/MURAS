@@ -28,7 +28,7 @@ const CartContextProvider = ({ children }) => {
   const [state, dispatch] = useReducer(reducer, INIT_STATE);
   // стягиваем данные из localStorage
   const getCart = () => {
-    let cart = JSON.parce(localStorage.getItem("cart"));
+    let cart = JSON.parse(localStorage.getItem("cart"));
     if (!cart) {
       localStorage.setItem(
         "cart",
@@ -93,12 +93,11 @@ const CartContextProvider = ({ children }) => {
       payload: cart,
     });
   };
-  // deleteProductInCart
   const deleteCartProduct = (id) => {
     let cart = JSON.parse(localStorage.getItem("cart"));
     cart.products = cart.products.filter((elem) => elem.item.id !== id);
     cart.totalPrice = calcTotalPrice(cart.products);
-    localStorage.setItem("cart"), JSON.stringify(cart);
+    localStorage.setItem("cart", JSON.stringify(cart));
     dispatch({
       type: "GET_CART",
       payload: cart,

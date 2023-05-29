@@ -8,6 +8,7 @@ import TableHead from '@mui/material/TableHead';
 import TableRow from '@mui/material/TableRow';
 import Paper from '@mui/material/Paper';
 import { useCart } from '../../context/CartContextProvider';
+import { useEffect } from 'react';
 
 const StyledTableCell = styled(TableCell)(({ theme }) => ({
   [`&.${tableCellClasses.head}`]: {
@@ -42,30 +43,51 @@ const rows = [
 ];
 
 export default function Cart() {
-    const { getCart, addProductToCart, cart} = useCart()
-    
+    const { getCart, cart,  changeProductCount, deleteCartProduct,} = useCart();
+    // console.log(cart);
+    useEffect(()=>{
+        getCart();
+    },[]);
+
+    // const cartCleaner= ()=>{
+    //     localStorage.removeItem("cart");
+    //     getCart();
+    // }
+
   return (
-    <TableContainer component={Paper}>
-      <Table sx={{ minWidth: 700 }} aria-label="customized table">
+    <TableContainer sx={{width:"90%", margin: "20px auto"}} component={Paper}>
+      <Table sx={{ minWidth: 700}} aria-label="customized table">
         <TableHead>
-          <TableRow>
-            <StyledTableCell>Dessert (100g serving)</StyledTableCell>
-            <StyledTableCell align="right">Calories</StyledTableCell>
-            <StyledTableCell align="right">Fat&nbsp;(g)</StyledTableCell>
-            <StyledTableCell align="right">Carbs&nbsp;(g)</StyledTableCell>
-            <StyledTableCell align="right">Protein&nbsp;(g)</StyledTableCell>
+          <TableRow sx={{dispaly:"flex", justifyContent:"space-around", flexWrap: "wrap", textAlign: "center"}}>
+            <StyledTableCell sx={{textAlign: "center"}}>Picture</StyledTableCell>
+            <StyledTableCell sx={{textAlign: "center"}} align="right">Name</StyledTableCell>
+            <StyledTableCell sx={{textAlign: "center"}} align="right">Category</StyledTableCell>
+            <StyledTableCell sx={{textAlign: "center"}} align="right">Description</StyledTableCell>
+            <StyledTableCell sx={{textAlign: "center"}} align="right">Price</StyledTableCell>
+            <StyledTableCell sx={{textAlign: "center"}} align="right">SubPrice</StyledTableCell>
+            <StyledTableCell sx={{textAlign: "center"}} align="right">-</StyledTableCell>
           </TableRow>
         </TableHead>
         <TableBody>
-          {rows.map((row) => (
-            <StyledTableRow key={row.name}>
+          {cart?.products.map((row) => (
+            <StyledTableRow key={row.item.id}>
               <StyledTableCell component="th" scope="row">
-                {row.name}
+                <img src={row.item.picture}  width="70" height="70" alt="" />
               </StyledTableCell>
-              <StyledTableCell align="right">{row.calories}</StyledTableCell>
-              <StyledTableCell align="right">{row.fat}</StyledTableCell>
-              <StyledTableCell align="right">{row.carbs}</StyledTableCell>
-              <StyledTableCell align="right">{row.protein}</StyledTableCell>
+              <StyledTableCell align="right">{row.item.name}</StyledTableCell>
+              <StyledTableCell align="right">{row.item.category}</StyledTableCell>
+              <StyledTableCell align="right">{row.item.description}</StyledTableCell>
+              <StyledTableCell align="right">{row.item.price}</StyledTableCell>
+              <StyledTableCell align="right">
+                <input type="number" 
+                onChange={(e)=>changeProductCount(e.target.value, row.item.id) } 
+                value={row.count}
+                />
+              </StyledTableCell>
+              <button onClick={() => deleteCartProduct(row.item.id)}>
+                  DELETE
+                </button>
+                
             </StyledTableRow>
           ))}
         </TableBody>
