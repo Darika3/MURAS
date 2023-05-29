@@ -11,12 +11,14 @@ const AuthContextProvider = ({ children }) => {
 
   const navigate = useNavigate();
 
-  async function handleRegister(formData) {
+  async function handleRegister(formData, username) {
     try {
-      await axios.post(`${API}auth/user/`, formData);
+      const res = await axios.post(`${API}auth/user/`, formData);
+      localStorage.setItem("tokens", JSON.stringify(res.data));
+      localStorage.setItem("username", username);
       navigate("/");
     } catch (error) {
-      setError(Object.values(error.response));
+      setError(Object.values(error.response.data));
       console.log(error);
     }
   }
@@ -28,7 +30,6 @@ const AuthContextProvider = ({ children }) => {
       localStorage.setItem("username", username);
       setCurrentUser(username);
       navigate("/");
-      console.log(res.data);
     } catch (error) {
       setError(Object.values(error.response.data));
     }
@@ -44,10 +45,11 @@ const AuthContextProvider = ({ children }) => {
         "tokens",
         JSON.stringify({ access: res.data.access, refresh: tokens.refresh })
       );
-      const email = localStorage.getItem("email");
-      setCurrentUser(email);
+      const username = localStorage.getItem("username");
+      setCurrentUser(username);
     } catch (error) {
       console.log(error);
+      handleLogout();
     }
   }
   function handleLogout() {
