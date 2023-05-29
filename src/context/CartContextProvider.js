@@ -93,6 +93,7 @@ const CartContextProvider = ({ children }) => {
       payload: cart,
     });
   };
+
   const values = {
     getCart,
     addProductToCart,
