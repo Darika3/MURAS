@@ -18,7 +18,7 @@ const Products = () => {
           <img className="socialIcons" src={facebook} alt="" />
           <img className="socialIcons" src={phoneIcon} alt="" />
         </div>
-        <button className="categoryBtn">Traditional Food</button>
+        <button onClick={() => navigate("/food")} className="categoryBtn">Traditional Food</button>
       </div>
       <div className="productsCategory clothesCategory">
         <button onClick={() => navigate("/clothes")} className="categoryBtn">

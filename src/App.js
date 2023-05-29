@@ -1,4 +1,5 @@
 import React from "react";
+import ProductFood from "./components/Products/ProductsFood/ProductFood";
 import MainRoutes from "./routes/MainRoutes";
 
 const App = () => {
