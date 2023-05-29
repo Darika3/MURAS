@@ -29,6 +29,7 @@ const pages = [
   { name: "Our Culture", link: "/culture", id: 2 },
   { name: "Products", link: "/products", id: 3 },
   { name: "Tours", link: "/tours", id: 4 },
+  { name: "Admin", link: "/admin", id: 4 },
 ];
 
 const Navbar = () => {
@@ -74,6 +75,7 @@ const Navbar = () => {
           { title: "Our Culture", link: "/culture" },
           { title: "Products", link: "/products" },
           { title: "Tours", link: "/products" },
+          { title: "Admin", link: "/admin" },
         ].map((text, index) => (
           <ListItem key={text} disablePadding>
             <ListItemButton>

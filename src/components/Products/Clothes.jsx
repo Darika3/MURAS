@@ -2,6 +2,9 @@ import React from "react";
 import "../Products/Products.css";
 import foodMainPic from "../Products/assetsProducts/traditionalClothes.jpg";
 import Navbar from "../Navbar/Navbar";
+
+import Productcard from "./Crud/ProductCard";
+import AddProduct from "./Crud/AddProduct";
 const Clothes = () => {
   return (
     <div>
@@ -26,6 +29,14 @@ const Clothes = () => {
           </p>
           <button id="clothMainRightButton">Order Now</button>
         </div>
+      </div>
+      <div className="product__food_card-container">
+        <div className="item_filter-btn">
+          <button>Outerwear</button>
+          <button>Headdress</button>
+          <button>Shoes</button>
+        </div>
+        <Productcard />
       </div>
     </div>
   );
