@@ -8,6 +8,8 @@ import Souvenirs from "../components/Products/Souvenirs";
 import ProductFood from "../components/Products/ProductsFood/ProductFood";
 import Culture from "../components/Culture/Culture";
 import Tours from "../components/Tours/Tours";
+import Cart from "../components/Cart/Cart";
+
 
 const MainRoutes = () => {
   const PUBLIC_ROUTES = [
@@ -19,6 +21,8 @@ const MainRoutes = () => {
     { link: "/food", element: <ProductFood/>, id: 6 },
     { link: "/culture", element: <Culture/>, id: 7 },
     { link: "/tours", element: <Tours/>, id: 8 },
+    { link: "/cart", element: <Cart/>, id: 9 },
+  
   ];
   return (
     <>

@@ -15,7 +15,7 @@ const INIT_STATE = {
 
 const reducer = (state = INIT_STATE, action) => {
   switch (key) {
-    case GET_CATEGORIES:
+    case "GET_CATEGORIES":
       return {
         ...state,
         categories: action.payload,
@@ -28,14 +28,14 @@ const reducer = (state = INIT_STATE, action) => {
 const ProductContextProvider = ({ children }) => {
   const [state, dispatch] = useReducer(reducer, INIT_STATE);
   console.log(state);
-  // function getConfig() {
-  //   const tokens = JSON.parse(localStorage.getItem("tokens"));
-  //   const Authorization = `JWT ${tokens.access}`;
-  //   const config = {
-  //     headers: { Authorization },
-  //   };
-  //   return config;
-  // }
+  function getConfig() {
+    const tokens = JSON.parse(localStorage.getItem("tokens"));
+    const Authorization = `JWT ${tokens.access}`;
+    const config = {
+      headers: { Authorization },
+    };
+    return config;
+  }
   const values = {};
   return (
     <productContext.Provider value={values}>{children}</productContext.Provider>
