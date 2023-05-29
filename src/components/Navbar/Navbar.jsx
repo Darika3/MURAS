@@ -7,6 +7,7 @@ import shopIcon from "../../assets/image/shopIcon.svg";
 import profileIcon from "../../assets/image/profileIcon.svg";
 import burgerMenu from "../../assets/image/burgerMenu.png";
 import "../Navbar/Navbar.css";
+import { useAuth } from "../../context/AuthContextProvider";
 
 const pages = [
   { name: "Home", link: "/", id: 1 },
@@ -25,7 +26,7 @@ const Navbar = () => {
   const handleMouseClose = () => {
     setOpenModal(false);
   };
-
+  const { handleLogout } = useAuth();
   return (
     <div>
       <div className="nav-container">
@@ -56,9 +57,9 @@ const Navbar = () => {
       </div>
       {openModal && (
         <div className="modal-profile">
-          <p>Register</p>
-          <p>Login</p>
-          <p>Logout</p>
+          <p onClick={() => navigate("/register")}>Register</p>
+          <p onClick={() => navigate("/login")}>Login</p>
+          <p onClick={() => navigate("/auth")}>Logout</p>
         </div>
       )}
       <img id="burger" src={burgerMenu} alt="burgerMenu" />
