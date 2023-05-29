@@ -6,6 +6,8 @@ import instagram from "../../../assets/image/inst.svg"
 import telegram from "../../../assets/image/telegram.svg"
 import facebook from "../../../assets/image/facebook.svg"
 import WhatsApp from "../../../assets/image/Wp.svg"
+import AddFood from '../Crud/AddFood'
+import FoodCart from '../Crud/FoodCart'
 const ProductFood = () => {
   return (
     <>
@@ -37,7 +39,8 @@ Kyrgyz Traditional Food</h1>
             <button>drinks</button>
             <button>snacks</button>
         </div>
-
+        <FoodCart/>
+        <AddFood/>
     </div>
     </>
   )
