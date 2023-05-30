@@ -104,7 +104,7 @@ const Navbar = () => {
       <List sx={{ width: "90%", display: "flex" }}>
         <ListItem sx={{ display: "flex", justifyContent: "space-around" }}>
           <BookmarkBorderIcon />
-          <AddShoppingCartIcon />
+          <AddShoppingCartIcon onClick={()=>navigate('/cart')}/>
           <PersonIcon />
         </ListItem>
       </List>
@@ -130,7 +130,7 @@ const Navbar = () => {
         </div>
         <div className="item-icons">
           <img src={favoriteIcon} alt="favoriteIcon" />
-          <img src={shopIcon} alt="favoriteIcon" />
+          <img  onClick={()=>navigate('/cart')} src={shopIcon} alt="shopIcon" />
           {currentUser ? (
             <img
               onMouseMove={handleMouseOpen}

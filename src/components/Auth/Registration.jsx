@@ -1,4 +1,5 @@
 import React, { useState } from "react";
+import { useNavigate } from "react-router-dom";
 import { useAuth } from "../../context/AuthContextProvider";
 import "../Auth/auth.css";
 const Registration = () => {
@@ -7,6 +8,8 @@ const Registration = () => {
   const [password, setPassword] = useState("");
 
   const { handleRegister, error, setError } = useAuth();
+ 
+  const navigate = useNavigate()
 
   function handleSave() {
     if (!email.trim() || !username.trim() || !password.trim()) {
@@ -40,7 +43,7 @@ const Registration = () => {
           type="password"
           placeholder="password"
         />
-        <button onClick={handleSave}>Register</button>
+        <button onClick={()=>{handleSave(); navigate("/")}}>Register</button>
       </div>
     </div>
   );

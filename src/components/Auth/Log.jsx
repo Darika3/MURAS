@@ -33,8 +33,8 @@ const Log = () => {
           placeholder="password"
           onChange={(e) => setPassword(e.target.value)}
         />
-        <button onClick={handleSave}>log in</button>
-        <button onClick={() => navigate("/")}>Back to Home</button>
+        <button onClick={()=>{handleSave(); navigate("/")}}>log in</button>
+        {/* <button>Back to Home</button> */}
       </div>
     </div>
   );
