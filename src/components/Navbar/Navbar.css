@@ -20,6 +20,7 @@
   height: 50px;
 }
 .item-menu {
+  cursor: pointer;
   color: white;
   display: flex;
   justify-content: space-around;
