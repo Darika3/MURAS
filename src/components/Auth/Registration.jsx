@@ -43,7 +43,8 @@ const Registration = () => {
           type="password"
           placeholder="password"
         />
-        <button onClick={()=>{handleSave(); navigate("/")}}>Register</button>
+        <button onClick={()=>{handleSave(); navigate("/login")}}>Register</button>
+        <p onClick={()=> navigate("/login")}>Already have an account? Login</p>
       </div>
     </div>
   );

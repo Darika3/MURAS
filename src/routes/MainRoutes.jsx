@@ -10,9 +10,9 @@ import Culture from "../components/Culture/Culture";
 import Tours from "../components/Tours/Tours";
 import Cart from "../components/Cart/Cart";
 
-
 import Registration from "../components/Auth/Registration";
 import Log from "../components/Auth/Log";
+import AddProduct from "../components/Products/Crud/AddProduct";
 
 const MainRoutes = () => {
   const PUBLIC_ROUTES = [
@@ -23,20 +23,18 @@ const MainRoutes = () => {
     { link: "/souvenirs", element: <Souvenirs />, id: 5 },
     { link: "/register", element: <Registration />, id: 6 },
     { link: "/login", element: <Log />, id: 7 },
-    { link: "/food", element: <ProductFood/>, id: 8 },
-    { link: "/culture", element: <Culture/>, id: 9 },
-    { link: "/tours", element: <Tours/>, id: 10 },
-    { link: "/cart", element: <Cart/>, id: 11 },
-  
+    { link: "/food", element: <ProductFood />, id: 8 },
+    { link: "/culture", element: <Culture />, id: 9 },
+    { link: "/tours", element: <Tours />, id: 10 },
+    { link: "/cart", element: <Cart />, id: 11 },
+    { link: "/admin", element: <AddProduct />, id: 12 },
   ];
   return (
     <>
       <Routes>
-        {PUBLIC_ROUTES.map(
-          (item) => (
-            (<Route path={item.link} element={item.element} key={item.id} />)
-          )
-        )}
+        {PUBLIC_ROUTES.map((item) => (
+          <Route path={item.link} element={item.element} key={item.id} />
+        ))}
       </Routes>
     </>
   );

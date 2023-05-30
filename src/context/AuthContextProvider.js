@@ -11,11 +11,9 @@ const AuthContextProvider = ({ children }) => {
 
   const navigate = useNavigate();
 
-  async function handleRegister(formData, username) {
+  async function handleRegister(formData) {
     try {
-      const res = await axios.post(`${API}auth/user/`, formData);
-      localStorage.setItem("tokens", JSON.stringify(res.data));
-      localStorage.setItem("username", username);
+      await axios.post(`${API}auth/user/`, formData);
       navigate("/");
     } catch (error) {
       setError(Object.values(error.response.data));

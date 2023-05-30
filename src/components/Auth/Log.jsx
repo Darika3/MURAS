@@ -34,7 +34,7 @@ const Log = () => {
           onChange={(e) => setPassword(e.target.value)}
         />
         <button onClick={()=>{handleSave(); navigate("/")}}>log in</button>
-        {/* <button>Back to Home</button> */}
+        <p onClick={()=> navigate("/register")}>Don't have an account? Register Now</p>
       </div>
     </div>
   );
