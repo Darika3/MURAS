@@ -1,10 +1,11 @@
-import React, { useState } from "react";
+import React, { useEffect, useState } from "react";
 import { useNavigate } from "react-router-dom";
 import logo from "../../assets/image/logo.svg";
 import searchIcon from "../../assets/image/searchIcon.png";
 import favoriteIcon from "../../assets/image/favoritesIcon.svg";
 import shopIcon from "../../assets/image/shopIcon.svg";
 import profileIcon from "../../assets/image/profileIcon.svg";
+import logIcon from "../../assets/image/logicon.png";
 import burgerMenu from "../../assets/image/burgerMenu.png";
 import "../Navbar/Navbar.css";
 import Box from "@mui/material/Box";
@@ -23,6 +24,7 @@ import MailIcon from "@mui/icons-material/Mail";
 import BookmarkBorderIcon from "@mui/icons-material/BookmarkBorder";
 import AddShoppingCartIcon from "@mui/icons-material/AddShoppingCart";
 import PersonIcon from "@mui/icons-material/Person";
+import { useAuth } from "../../context/AuthContextProvider";
 
 const pages = [
   { name: "Home", link: "/", id: 1 },
@@ -34,6 +36,13 @@ const pages = [
 const Navbar = () => {
   const navigate = useNavigate();
   const [openModal, setOpenModal] = useState(false);
+  const { handleLogout, currentUser, checkAuth, user } = useAuth();
+
+  useEffect(() => {
+    if (localStorage.getItem("tokens")) {
+      checkAuth();
+    }
+  }, []);
 
   const handleMouseOpen = () => {
     setOpenModal(true);
@@ -122,19 +131,30 @@ const Navbar = () => {
         <div className="item-icons">
           <img src={favoriteIcon} alt="favoriteIcon" />
           <img src={shopIcon} alt="favoriteIcon" />
-          <img
-            onMouseMove={handleMouseOpen}
-            onClick={handleMouseClose}
-            src={profileIcon}
-            alt="favoriteIcon"
-          />
+          {currentUser ? (
+            <img
+              onMouseMove={handleMouseOpen}
+              onClick={handleMouseClose}
+              src={logIcon}
+              alt="favoriteIcon"
+            />
+          ) : (
+            <img
+              onMouseMove={handleMouseOpen}
+              onClick={handleMouseClose}
+              src={profileIcon}
+              alt="favoriteIcon"
+            />
+          )}
         </div>
       </div>
       {openModal && (
         <div className="modal-profile">
           <p onClick={() => navigate("/register")}>Register</p>
           <p onClick={() => navigate("/login")}>Login</p>
-          <p>Logout</p>
+          <p onClick={handleLogout}>Logout</p>
+          <hr></hr>
+          {currentUser ? currentUser : null}
         </div>
       )}
       <div>

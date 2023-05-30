@@ -69,10 +69,10 @@
 }
 .modal-profile {
   position: absolute;
-  left: 92%;
+  left: 82%;
   top: 68px;
-  width: 80px;
-  height: 85px;
+  width: 200px;
+  height: 100px;
   background-color: #d0cec8;
   color: #4d4d4d;
   border-radius: 10px;
@@ -85,7 +85,9 @@
   padding: 10px 0px 0px 15px;
   z-index: 10;
 }
-
+.modal-profile p {
+  cursor: pointer;
+}
 @media (max-width: 768px) {
   .item-menu {
     display: none;
