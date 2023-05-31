@@ -3,9 +3,9 @@ import React, { useReducer } from "react";
 import { useContext, createContext } from "react";
 import { useNavigate } from "react-router-dom";
 
-export const productContext = createContext();
-export const useProduct = () => useContext(productContext);
-export const API = "http://13.51.56.148/";
+export const ProductContext = createContext();
+export const useProduct = () => useContext(ProductContext);
+export const API = "http://34.125.229.224/docs/";
 
 const INIT_STATE = {
   products: [],
@@ -29,34 +29,41 @@ const ProductContextProvider = ({ children }) => {
 
   function getConfig() {
     const tokens = JSON.parse(localStorage.getItem("tokens"));
-    const Authorization = `JWT ${tokens.access}`;
+    const Authorization = `Bearer ${tokens.refresh}`;
     const config = {
-      headers: { Authorization },
+      headers: {
+        Authorization: `Bearer ${tokens.access}`,
+      },
     };
     console.log(config);
     return config;
   }
 
   async function createProduct(newProduct, category) {
+    console.log(category);
     try {
       if (category === "food") {
-        const res = await axios.post(`${API}food/`, newProduct, getConfig());
+        const res = await axios.post(`${API}/food/`, newProduct, getConfig());
         console.log(res);
         navigate("/food");
       } else if (category === "clothes") {
-        const res = await axios.post(`${API}clothes/`, newProduct, getConfig());
+        const res = await axios.post(
+          `${API}/clothes/`,
+          newProduct,
+          getConfig()
+        );
         console.log(res);
         navigate("/clothes");
       } else if (category === "souvenirs") {
         const res = await axios.post(
-          `${API}souvenirs/`,
+          `${API}/souvenirs/`,
           newProduct,
           getConfig()
         );
         console.log(res);
         navigate("/souvenirs");
       } else {
-        const res = await axios.post(`${API}tours/`, newProduct, getConfig());
+        const res = await axios.post(`${API}/tours/`, newProduct, getConfig());
         console.log(res);
         navigate("/tours");
       }
@@ -68,22 +75,22 @@ const ProductContextProvider = ({ children }) => {
   async function getProducts(category) {
     try {
       if (category === "food") {
-        const res = await axios(`${API}food/`, getConfig());
+        const res = await axios(`${API}/food/`, getConfig());
         console.log(res);
         navigate("/food");
         dispatch({ type: "GET_PRODUCTS", payload: res.data });
       } else if (category === "clothes") {
-        const res = await axios(`${API}clothes/`, getConfig());
+        const res = await axios(`${API}/clothes/`, getConfig());
         console.log(res);
         navigate("/clothes");
         dispatch({ type: "GET_PRODUCTS", payload: res.data });
       } else if (category === "souvenirs") {
-        const res = await axios(`${API}souvenirs/`, getConfig());
+        const res = await axios(`${API}/souvenirs/`, getConfig());
         console.log(res);
         navigate("/souvenirs");
         dispatch({ type: "GET_PRODUCTS", payload: res.data });
       } else {
-        const res = await axios(`${API}tours/`, getConfig());
+        const res = await axios(`${API}/tours/`, getConfig());
         console.log(res);
         navigate("/tours");
         dispatch({ type: "GET_PRODUCTS", payload: res.data });
@@ -96,13 +103,13 @@ const ProductContextProvider = ({ children }) => {
   async function deleteProduct(id, category) {
     try {
       if (category === "food") {
-        await axios.delete(`${API}food/${id}/`, getConfig());
+        await axios.delete(`${API}/food/${id}/`, getConfig());
       } else if (category === "clothes") {
-        await axios.delete(`${API}clothes/${id}/`, getConfig());
+        await axios.delete(`${API}/clothes/${id}/`, getConfig());
       } else if (category === "souvenirs") {
-        await axios.delete(`${API}souvenirs/${id}/`, getConfig());
+        await axios.delete(`${API}/souvenirs/${id}/`, getConfig());
       } else {
-        await axios.delete(`${API}tours/${id}/`, getConfig());
+        await axios.delete(`${API}/tours/${id}/`, getConfig());
       }
       getProducts(category);
     } catch (error) {
@@ -113,16 +120,20 @@ const ProductContextProvider = ({ children }) => {
   async function updateProduct(id, editedProduct, category) {
     try {
       if (category === "food") {
-        await axios.patch(`${API}food/${id}/`, editedProduct, getConfig());
+        await axios.patch(`${API}/food/${id}/`, editedProduct, getConfig());
         navigate("/food");
       } else if (category === "clothes") {
-        await axios.patch(`${API}clothes/${id}/`, editedProduct, getConfig());
+        await axios.patch(`${API}/clothes/${id}/`, editedProduct, getConfig());
         navigate("/clothes");
       } else if (category === "souvenirs") {
-        await axios.patch(`${API}souvenirs/${id}/`, editedProduct, getConfig());
+        await axios.patch(
+          `${API}/souvenirs/${id}/`,
+          editedProduct,
+          getConfig()
+        );
         navigate("/souvenirs");
       } else {
-        await axios.patch(`${API}tours/${id}/`, editedProduct, getConfig());
+        await axios.patch(`${API}/tours/${id}/`, editedProduct, getConfig());
         navigate("/tours");
       }
     } catch (error) {
@@ -139,7 +150,7 @@ const ProductContextProvider = ({ children }) => {
   };
 
   return (
-    <productContext.Provider value={values}>{children}</productContext.Provider>
+    <ProductContext.Provider value={values}>{children}</ProductContext.Provider>
   );
 };
 

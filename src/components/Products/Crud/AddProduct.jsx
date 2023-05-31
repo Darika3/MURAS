@@ -23,7 +23,7 @@ const AddProduct = () => {
     newProduct.append("name", name);
     newProduct.append("description", description);
     newProduct.append("price", price);
-    newProduct.append("category", category);
+    newProduct.append("category", 5);
     newProduct.append("type", type);
     newProduct.append("image", image);
     newProduct.append("distance", distance);
@@ -47,7 +47,6 @@ const AddProduct = () => {
             <option value="clothes">Clothes</option>
             <option value="souvenirs">Souvenirs</option>
             <option value="tours">Tours</option>
-            <option value=""></option>
           </select>
 
           {category === "tours" && (

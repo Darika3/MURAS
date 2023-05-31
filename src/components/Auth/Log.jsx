@@ -10,9 +10,10 @@ const Log = () => {
   const navigate = useNavigate();
   function handleSave() {
     if (!username.trim() || !password.trim()) {
-      alert("заполните все поля");
+      alert("Заполните все поля");
     } else {
       let formData = new FormData();
+
       formData.append("username", username);
       formData.append("password", password);
       handleLogin(formData, username);
@@ -33,8 +34,17 @@ const Log = () => {
           placeholder="password"
           onChange={(e) => setPassword(e.target.value)}
         />
-        <button onClick={()=>{handleSave(); navigate("/")}}>log in</button>
-        <p onClick={()=> navigate("/register")}>Don't have an account? Register Now</p>
+        <button
+          onClick={() => {
+            handleSave();
+            navigate("/");
+          }}
+        >
+          log in
+        </button>
+        <p onClick={() => navigate("/register")}>
+          Don't have an account? Register Now
+        </p>
       </div>
     </div>
   );

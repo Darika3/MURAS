@@ -4,22 +4,30 @@ import { useAuth } from "../../context/AuthContextProvider";
 import "../Auth/auth.css";
 const Registration = () => {
   const [email, setEmail] = useState("");
-  const [username, setUsername] = useState("");
+  const [phone, setPhone] = useState("");
   const [password, setPassword] = useState("");
+  const [passwordConfirm, setPasswordConfirm] = useState("");
 
   const { handleRegister, error, setError } = useAuth();
- 
-  const navigate = useNavigate()
+
+  const navigate = useNavigate();
 
   function handleSave() {
-    if (!email.trim() || !username.trim() || !password.trim()) {
+    if (
+      !email.trim() ||
+      !phone.trim() ||
+      !password.trim() ||
+      !passwordConfirm.trim()
+    ) {
       alert("Заполните все поля");
     } else {
       let formData = new FormData();
       formData.append("email", email);
-      formData.append("username", username);
+      formData.append("phone", phone);
       formData.append("password", password);
-      handleRegister(formData, username);
+      formData.append("password_confirm", passwordConfirm);
+
+      handleRegister(formData, email);
     }
   }
 
@@ -34,17 +42,23 @@ const Registration = () => {
           placeholder="email"
         />
         <input
-          onChange={(e) => setUsername(e.target.value)}
+          onChange={(e) => setPhone(e.target.value)}
           type="text"
-          placeholder="username"
+          placeholder="phone"
         />
         <input
           onChange={(e) => setPassword(e.target.value)}
-          type="password"
+          type="text"
           placeholder="password"
         />
-        <button onClick={()=>{handleSave(); navigate("/login")}}>Register</button>
-        <p onClick={()=> navigate("/login")}>Already have an account? Login</p>
+
+        <input
+          onChange={(e) => setPasswordConfirm(e.target.value)}
+          type="password"
+          placeholder="password confirm"
+        />
+        <button onClick={() => handleSave()}>Register</button>
+        <p onClick={() => navigate("/login")}>Already have an account? Login</p>
       </div>
     </div>
   );

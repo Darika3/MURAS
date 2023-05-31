@@ -3,7 +3,7 @@ import React, { createContext, useContext, useState } from "react";
 import { useNavigate } from "react-router-dom";
 export const authContext = createContext();
 export const useAuth = () => useContext(authContext);
-export const API = "http://13.51.56.148/";
+export const API = "http://34.125.229.224/";
 
 const AuthContextProvider = ({ children }) => {
   const [error, setError] = useState(null);
@@ -11,12 +11,19 @@ const AuthContextProvider = ({ children }) => {
 
   const navigate = useNavigate();
 
-  async function handleRegister(formData) {
+  async function handleRegister(formData, email) {
     try {
-      await axios.post(`${API}auth/user/`, formData);
-      navigate("/");
+      const res = await axios.post(
+        `${API}api/v1/account/register/
+      `,
+        formData
+      );
+      localStorage.setItem("tokens", JSON.stringify(res.data));
+      localStorage.setItem("email", email);
+      setCurrentUser(email);
+      navigate("/login");
     } catch (error) {
-      setError(Object.values(error.response.data));
+      // setError(Object.values(error.response.data));
       console.log(error);
     }
   }
