@@ -13,6 +13,7 @@ import Cart from "../components/Cart/Cart";
 import Registration from "../components/Auth/Registration";
 import Log from "../components/Auth/Log";
 import AddProduct from "../components/Products/Crud/AddProduct";
+import Activation from "../components/Action/Activation";
 
 const MainRoutes = () => {
   const PUBLIC_ROUTES = [
@@ -28,9 +29,10 @@ const MainRoutes = () => {
     { link: "/tours", element: <Tours />, id: 10 },
     { link: "/cart", element: <Cart />, id: 11 },
     { link: "/admin", element: <AddProduct />, id: 12 },
+    { link: "/http://13.51.56.148//activate/?:/uid&:/token", element: <Activation />, id: 13 },
   ];
   return (
-    <>
+    <> 
       <Routes>
         {PUBLIC_ROUTES.map((item) => (
           <Route path={item.link} element={item.element} key={item.id} />

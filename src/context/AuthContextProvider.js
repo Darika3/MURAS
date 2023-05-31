@@ -14,10 +14,18 @@ const AuthContextProvider = ({ children }) => {
   async function handleRegister(formData) {
     try {
       await axios.post(`${API}auth/user/`, formData);
-      navigate("/");
+      navigate("/login");
     } catch (error) {
       setError(Object.values(error.response.data));
       console.log(error);
+    }
+  }
+
+  async function handleActivation(uid, token) {
+    try {
+      await axios.post(`${API}auth/user/activation/`, { uid, token });
+    } catch (error) {
+      setError(Object.values(error.response.data));
     }
   }
 
@@ -66,6 +74,7 @@ const AuthContextProvider = ({ children }) => {
     currentUser,
     setCurrentUser,
     handleLogout,
+    handleActivation,
   };
   return <authContext.Provider value={values}>{children}</authContext.Provider>;
 };

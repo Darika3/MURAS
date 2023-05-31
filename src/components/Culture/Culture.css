@@ -91,7 +91,7 @@
     top: 260px;
     left: 230px;
     height: 100px;
-    animation: runMen 3s ease-in-out 146s forwards;
+    animation: runMen 20s ease-in-out 1s forwards;
     background-color: inherit ;
 }
 @keyframes runMen{
@@ -108,7 +108,7 @@
     left: 810px;                          
     height: 100px;
     background-color: inherit ;
-    animation: runMen2 3s ease-in-out 283s  forwards;
+    /* animation: runMen2 283s ease-in-out 1s  forwards; */
 }
     @keyframes runMen2{
         0%{
