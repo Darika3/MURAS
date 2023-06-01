@@ -18,13 +18,15 @@
 .item-logo {
   width: 55px;
   height: 50px;
+  margin-right: 30px;
 }
 .item-menu {
   cursor: pointer;
   color: white;
   display: flex;
+  flex-wrap: wrap;
   justify-content: space-around;
-  width: 35%;
+  width: 55%;
   font-family: "Inter";
   font-style: normal;
   font-weight: 400;

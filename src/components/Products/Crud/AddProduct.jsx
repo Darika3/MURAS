@@ -4,7 +4,7 @@ import { useProduct } from "../../../context/ProductContextProvider";
 import "./AddProduct.css";
 import Navbar from "../../Navbar/Navbar";
 const AddProduct = () => {
-  const { createFood, createFoodCategory} = useProduct();
+  const { createFood, } = useProduct();
   const [category, setCategory] = useState("");
   // const [type, setType] = useState("");
   const [name, setName] = useState("");
@@ -20,19 +20,16 @@ const AddProduct = () => {
 
   function handleSave() {
     const newFood = new FormData();
-    const newFoodCategory = new FormData()
     newFood.append("name", name);
     newFood.append("description", description);
     newFood.append("price", price);
-    newFood.append("category", 5);
+    newFood.append("category", category);
     // newFood.append("type", type);
     newFood.append("image", image);
     // newFood.append("distance", distance);
     newFood.append("ingredients", ingredients);
     newFood.append("preparation_time", preparation_time);
-    createFood(newFood);
-    createFoodCategory(newFoodCategory)
-
+    createFood(newFood, category);
   }
 
   return (
